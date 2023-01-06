@@ -1,0 +1,61 @@
+@port = 5000
+@resource=users
+@baseURL = http://localhost:{{port}}/api/v1/{{resource}}
+// Use a userID that was returned when you retrieved all users: 
+@userID = 63b7460f5ecec748046c3ef5
+
+### Sign up
+POST {{baseURL}}/signup HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "akos",
+    "email": "test@akos.com",
+    "password": "12345"
+}
+
+### Log in
+POST {{baseURL}}/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "test@akos.com",
+    "password": "12345"
+}
+
+### Log out
+POST {{baseURL}}/logout HTTP/1.1
+Content-Type: application/json
+
+### Get all users
+GET {{baseURL}} HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjcyOTg5NzU0LCJleHAiOjE2NzMwNzYxNTR9.TkOz43s1ZVKmfE1cEsXrOqCbURjt6WrkNcOLjgywiko
+Content-Type: application/json
+
+{
+    "masterKey": "47t4083y438"
+}
+
+### Get user
+GET {{baseURL}}/{{{userID}}} HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjcyOTg5NzU0LCJleHAiOjE2NzMwNzYxNTR9.TkOz43s1ZVKmfE1cEsXrOqCbURjt6WrkNcOLjgywiko
+Content-Type: application/json
+
+### Update user
+PATCH {{baseURL}}/{{{userID}}} HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjcyOTg5NzU0LCJleHAiOjE2NzMwNzYxNTR9.TkOz43s1ZVKmfE1cEsXrOqCbURjt6WrkNcOLjgywiko
+Content-Type: application/json
+
+{
+    "phoneNumber": "+12 345 678 999"
+}
+
+### Delete user
+PATCH {{baseURL}}/{{{userID}}} HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjcyOTg5NzU0LCJleHAiOjE2NzMwNzYxNTR9.TkOz43s1ZVKmfE1cEsXrOqCbURjt6WrkNcOLjgywiko
+Content-Type: application/json
+
+### Get user's carts
+GET {{baseURL}}/{{{userID}}}/carts HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjcyOTg5NzU0LCJleHAiOjE2NzMwNzYxNTR9.TkOz43s1ZVKmfE1cEsXrOqCbURjt6WrkNcOLjgywiko
+Content-Type: application/json

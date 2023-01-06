@@ -1,0 +1,25 @@
+{
+  "name": "ecommerce-cdp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "backend": "nodemon backend/server.js",
+    "frontend": "npm start --prefix frontend",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csernakakos/ecommerce-cdp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csernakakos/ecommerce-cdp/issues"
+  },
+  "homepage": "https://github.com/csernakakos/ecommerce-cdp#readme",
+  "dependencies": {
+      "concurrently": "^7.2.2",
+      "nodemon": "^2.0.18"
+  }
+}

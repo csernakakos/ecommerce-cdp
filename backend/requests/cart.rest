@@ -1,0 +1,69 @@
+@port = 5000
+@resource=carts
+@baseURL = http://localhost:{{port}}/api/v1/{{resource}}
+// Use a cartID that was returned when you retrieved all carts: 
+@cartID = 63b7d8d1393992eb433c5b51
+
+
+### Create cart
+POST {{baseURL}} HTTP/1.1
+Content-Type: application/json
+
+### Get all carts
+GET {{baseURL}} HTTP/1.1
+Content-Type: application/json
+
+### Get cart
+GET {{baseURL}}/{{cartID}} HTTP/1.1
+Content-Type: application/json
+
+### Update cart
+PATCH {{baseURL}}/{{cartID}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "status": "abandoned",
+    "activeCartItems": ["1", "2"]
+}
+
+### Delete cart
+DELETE {{baseURL}}/{{cartID}} HTTP/1.1
+Content-Type: application/json
+
+### Delete stale carts
+DELETE {{baseURL}} HTTP/1.1
+Content-Type: application/json
+
+### Create cart item
+POST {{baseURL}}/{{cartID}}/cartItems HTTP/1.1
+Content-Type: application/json
+
+{
+    "request": "create",
+    "productID": "12345",
+    "quantity": 1
+}
+
+### Update cart item quantity
+POST {{baseURL}}/{{cartID}}/cartItems HTTP/1.1
+Content-Type: application/json
+
+{
+    "request": "updateQuantity",
+    "productID": "12345",
+    "quantity": 8
+}
+
+### Remove cart item
+POST {{baseURL}}/{{cartID}}/cartItems HTTP/1.1
+Content-Type: application/json
+
+{
+    "request": "remove",
+    "productID": "12345"
+}
+
+
+### Empty `removedCartItems` of a cart
+PUT {{baseURL}}/{{cartID}} HTTP/1.1
+Content-Type: application/json
