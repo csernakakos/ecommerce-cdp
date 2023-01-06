@@ -3,6 +3,8 @@ import User from "../models/userModel.js";
 import asyncHandler from "express-async-handler";
 import logToConsole from "../config/logToConsole.js";
 
+const deleteAfter = 600000;
+
 // @desc    Create cart
 // @route   POST /api/v1/carts
 // @access  Public
@@ -59,8 +61,10 @@ export const getCart = asyncHandler(async(req, res) => {
     const cart = await Cart.findById(ID);
 
     if (!cart) {
-        res.status(404);
-        throw new Error("No such cart.");
+        res.status(200).json({
+            status: "not found",
+            message: "No such cart"
+        });
     }
 
     res.status(200).json({
@@ -126,7 +130,7 @@ export const deleteStaleCarts = asyncHandler(async(req, res) => {
         const createdAtTime = new Date(cart.createdAt).getTime();
         const currentTime = new Date().getTime();
 
-        if (currentTime - createdAtTime > 600000  // If more than 10 minutes passed since the cart was created,
+        if (currentTime - createdAtTime > deleteAfter  // If more than 10 minutes passed since the cart was created,
                 && cart.status === "pending" // And if status is "pending" and if all cart arrays are empty,
                 && cart.activeCartItems.length === 0
                 && cart.removedCartItems.length === 0
@@ -141,6 +145,8 @@ export const deleteStaleCarts = asyncHandler(async(req, res) => {
     });
 
     const deleteCount = filteredCarts.length;
+
+    console.log(deleteCount, "<<<< deleteCount")
 
     filteredCarts.forEach(async (item) => {
         const id = item._id;

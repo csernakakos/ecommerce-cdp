@@ -11,7 +11,7 @@ Content-Type: application/json
 
 {
     "brand": "ASOS",
-    "model": "ew4t-41",
+    "model": "ew4t-41222",
     "category": "trail runners",
     "priceNormal": "449",
     "priceCurrent": "579",

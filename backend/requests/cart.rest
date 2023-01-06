@@ -2,7 +2,7 @@
 @resource=carts
 @baseURL = http://localhost:{{port}}/api/v1/{{resource}}
 // Use a cartID that was returned when you retrieved all carts: 
-@cartID = 63b7d8d1393992eb433c5b51
+@cartID = 63b824a09eb6545974a08b59
 
 
 ### Create cart
@@ -22,7 +22,6 @@ PATCH {{baseURL}}/{{cartID}} HTTP/1.1
 Content-Type: application/json
 
 {
-    "status": "abandoned",
     "activeCartItems": ["1", "2"]
 }
 
