@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import useProductContext from "../hooks/use-product-context";
+import "../styles/SearchBar.css";
 
 export default function SearchBar() {
     const {products, setFilteredProducts} = useProductContext();

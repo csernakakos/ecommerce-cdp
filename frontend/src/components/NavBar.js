@@ -9,7 +9,8 @@ export default function NavBar() {
     const {deleteUserID, isLoggedIn} = useUserContext();
     const { basketCounter } = useCartContext();
    
-    return (
+    return (<>
+    
         <nav>
             <NavLink to="/" className="logo"><AiOutlineFastForward />
                 <p>
@@ -37,6 +38,14 @@ export default function NavBar() {
                 </>}
               
             </ul>
+        
         </nav>
+            <ul className="categories">
+                <li><NavLink to="/products">All shoes</NavLink></li>
+                <li><NavLink to="/products?category=men">Men</NavLink></li>
+                <li><NavLink to="/products?category=women">Women</NavLink></li>
+                <li><NavLink to="/products?category=discount">On discount</NavLink></li>
+            </ul>
+    </>
     )
 }

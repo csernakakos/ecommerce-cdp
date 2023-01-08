@@ -27,11 +27,11 @@ nav .logo p .brand-name {
 
 nav .logo p .domain-name {
     color: var(--brand-500);
-    font-style: normal;
     margin-left: 2px;
 }
 
-nav ul.menu {
+nav ul,
+ul.categories {
     display: flex;
     list-style-type: none;
     align-items: center;
@@ -61,4 +61,23 @@ nav ul.menu li svg {
     padding: 3px 0;
 	font-weight: bold;
 	text-align: center;
+}
+
+ul.categories {
+    justify-content: center;
+    margin: 2.4rem;
+    font-size: 1.8rem;
+}
+
+ul.categories a {
+    margin-left: 3rem;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: 800;
+}
+
+ul.categories a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--brand-500);
 }
