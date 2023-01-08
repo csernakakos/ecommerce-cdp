@@ -2,21 +2,32 @@
 @resource=products
 @baseURL = http://localhost:{{port}}/api/v1/{{resource}}
 // Use a productID that was returned when you retrieved all products: 
-@productID = 63b7eed4727ff1ae972cb2a8
-
+@productID = 63bab39b42be2c3bc3aa8d1e
 
 ### Create product
 POST {{baseURL}} HTTP/1.1
 Content-Type: application/json
 
 {
-    "brand": "ASOS",
-    "model": "ew4t-41222",
-    "category": "trail runners",
-    "priceNormal": "449",
-    "priceCurrent": "579",
-    "gender": "men"
+    "brand": "adidas Originals",
+    "model": "Retropy E5",
+    "category": "sneakers",
+    "priceNormal": "1105",
+    "priceCurrent": "718",
+    "currency": "DKK",
+    "gender": "unisex",
+    "image": "adidas-retropy-e5.webp",
+    "sizes": [
+        { "size": 39, "available": true, "availableInDays": 0 },
+        { "size": 40, "available": true, "availableInDays": 0 },
+        { "size": 41, "available": true, "availableInDays": 0 },
+        { "size": 42, "available": true, "availableInDays": 0 },
+        { "size": 43, "available": false, "availableInDays": 14 },
+        { "size": 44, "available": false, "availableInDays": 14 },
+        { "size": 45, "available": false, "availableInDays": 7 }
+    ]
 }
+
 
 ### Get all products
 GET {{baseURL}} HTTP/1.1
@@ -35,7 +46,8 @@ PATCH {{baseURL}}/{{productID}} HTTP/1.1
 Content-Type: application/json
 
 {
-    "gender": "women"
+    "brand": "Adidas Originals",
+    "image": "adidas-retropy-e5.webp"
 }
 
 ### Delete product

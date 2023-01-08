@@ -1,0 +1,43 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 2.4rem 0;
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo svg {
+    color: orangered;
+    font-size: 3.4rem;
+}
+
+nav .logo p {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+}
+
+nav .logo p .brand-name {
+    font-size: 2.8rem;
+}
+
+nav .logo p .domain-name {
+    color: orangered;
+}
+
+nav ul.menu {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul.menu li {
+    margin-left: 2rem;
+}
+
+nav ul.menu li svg {
+    font-size: 2.4rem;
+}

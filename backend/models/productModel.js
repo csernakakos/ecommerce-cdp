@@ -11,7 +11,7 @@ const productSchema = mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ["sneakers", "lightweight shoes", "trail runners", "stability shoes", "cushioned shoes"],
+        enum: ["sneakers", "running shoes", "trail runners", "crossfit trainers", "weightlifting shoes"],
         default: "sneakers"
     },
     priceNormal: {
@@ -22,18 +22,34 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: false,
     },
+    currency: {
+        type: String,
+        enum: ["DKK", "EUR", "USD"],
+        default: "DKK"
+    },
     onDiscount: {
         type: Boolean,
         required: false,
     },
     sizes: {
         type: Array,
-        default: [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+        default: [
+            { size: 39, available: true, },
+            { size: 40, available: true, availableInDays: 0 },
+            { size: 41, available: true, availableInDays: 0 },
+            { size: 42, available: true, availableInDays: 0 },
+            { size: 43, available: true, availableInDays: 0 },
+            { size: 44, available: true, availableInDays: 0 },
+            { size: 45, available: true, availableInDays: 0 },
+        ]
+    },
+    image: {
+        type: String
     },
     gender: {
         type: String,
-        enum: ["men", "women", "children"],
-        default: "men",
+        enum: ["unisex", "men", "women" ],
+        default: "unisex",
     }
 });
 
