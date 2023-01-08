@@ -27,14 +27,16 @@ export default function ProductCard({ product }) {
     return (
         <div className="product-card">
             <img src={require(`../images/${product.image}`) || require(`../images/default-shoe.jpg`)} />
-            <p className="name">{product.brand}</p>
-            <p className="model">{product.model}</p>
-            <p className="price">{product.priceCurrent} kr.</p>
-            <form onSubmit={handleAddToBasket}>
-                <p className="quantity">Quantity:</p>
-                <input type="number" min={1} max={10} onChange={handleInputChange} value={quantity} />
-                <button className="button add-to-basket"><FaCartPlus /></button>
-            </form>
+            <div className="details">
+                <p className="brand">{product.brand}</p>
+                <p className="model">{product.model}</p>
+                <p className="price">{product.priceCurrent} {product.currency}</p>
+                <form onSubmit={handleAddToBasket}>
+                    <p className="quantity">Size:</p>
+                    <input type="number" min={1} max={10} onChange={handleInputChange} value={quantity} />
+                    <button className="button add-to-basket"><FaCartPlus /></button>
+                </form>
+            </div>
         </div>
     )
 }

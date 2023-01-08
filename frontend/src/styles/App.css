@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;0,900;1,900&display=swap');
 
 :root {
     --black: black;
+    --white: white;
+    --brand-500: orangered;
+    --brand-300: #3c3939;
 }
 
 * {
@@ -25,6 +28,15 @@ a {
     text-decoration: none;
 }
 
+button {
+    font-family: inherit;
+}
+
+input {
+    font-family: inherit;
+    font-size: 1.8rem;
+}
+
 .app {
     max-width: 1200px;
     margin: 0 auto;
@@ -42,3 +54,60 @@ a {
 .product-list {
     display: flex;
 }
+
+.authentication-form {
+	display: flex;
+	flex-direction: column;
+	margin: 2.4rem auto;
+	max-width: 400px;
+	text-align: left;
+}
+
+.authentication-form label span {
+    display: flex;
+    align-items: center;
+}
+
+.authentication-form span span {
+    display: inline-block;
+    margin-left: 0.4rem;
+}
+
+.authentication-form input {
+	padding: 1.2rem;
+	width: 100%;
+    outline: none;
+    margin-bottom: 2.4rem;
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px var(--black);
+}
+
+.authentication-form input:hover {
+    box-shadow: inset 0 0 0 2px var(--black);
+}
+
+.authentication-form button {
+    padding: 1.2rem;
+    color: var(--white);
+    background: var(--black);
+    border: 0;
+    cursor: pointer;
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+}
+
+.authentication-form button:hover {
+    background: var(--brand-300);
+}
+
+.authentication-form p {
+    text-align: center;
+}
+
+.authentication-form .form-link {
+    text-decoration: underline;
+    color: var(--brand-500);
+}
+
+

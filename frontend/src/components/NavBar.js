@@ -2,7 +2,7 @@ import useUserContext from "../hooks/use-user-context";
 import useCartContext from "../hooks/use-cart-context";
 import { NavLink } from "react-router-dom";
 import { AiOutlineFastForward } from "react-icons/ai";
-import { SlBasket, SlHeart } from "react-icons/sl";
+import { BiCartAlt, BiHeart } from "react-icons/bi";
 import "../styles/NavBar.css";
 
 export default function NavBar() {
@@ -21,14 +21,14 @@ export default function NavBar() {
             <ul className="menu">
                 <li> 
                     <NavLink to="/basket">
-                        <SlBasket />
+                        <BiCartAlt />
                     </NavLink>
                     {basketCounter > 0 && <span className="badge">{basketCounter}</span>}
                     {basketCounter > 9 && <span className="badge">9+</span>}
                 </li>
 
                 { isLoggedIn && <>
-                    <li><NavLink to="/wishlist"><SlHeart /></NavLink></li>
+                    <li><NavLink to="/wishlist"><BiHeart /></NavLink></li>
                     <li><NavLink to="/" onClick={deleteUserID}>Log out</NavLink></li>
                 </>}
 

@@ -18,7 +18,7 @@ export default function BasketPage() {
     }
 
     return (
-        <div className="basket-page">
+        <div className="page">
             {basket.length === 0 && <h1>Your basket is empty</h1> }
             {basket.length === 1 && <h1>You've got 1 item in your basket</h1> }
             {basket.length > 1 && <h1>You've got {basket.length} items in your basket</h1> }

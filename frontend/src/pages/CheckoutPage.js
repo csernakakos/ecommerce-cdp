@@ -18,7 +18,7 @@ export default function CheckoutPage() {
     };
 
     return (
-        <div className="checkout-page">
+        <div className="page">
             <h1>Checkout</h1>
 
             <p>Pay</p>
