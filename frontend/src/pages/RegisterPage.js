@@ -10,11 +10,12 @@ export default function RegisterPage() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [checked, setChecked] = useState(false);
 
     const handleRegistration = async (e) => {
         e.preventDefault();
-        await registerUser(username, email, password);
-        this.props.history.push("/");
+        console.log("checked", checked);
+        await registerUser(username, email, password, checked);
     };
 
     return (<div className="page">
@@ -37,7 +38,7 @@ export default function RegisterPage() {
             </label>
 
             <label className="newsletter">
-                <input type="checkbox" /> <span>Send me product newsletters.</span>
+                <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} /> <span>Send me product newsletters.</span>
             </label>
 
             <button className="primary">Register</button>

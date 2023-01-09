@@ -11,7 +11,8 @@ Content-Type: application/json
 {
     "username": "akos",
     "email": "test@akos.com",
-    "password": "12345"
+    "password": "12345",
+    "newslettersEnabled": true
 }
 
 ### Log in
@@ -33,21 +34,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiN
 Content-Type: application/json
 
 {
-    "masterKey": "47t4083y438"
+    "masterKey": "47tds4083y438"
 }
 
 ### Get user
-GET {{baseURL}}/{{{userID}}} HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjcyOTg5NzU0LCJleHAiOjE2NzMwNzYxNTR9.TkOz43s1ZVKmfE1cEsXrOqCbURjt6WrkNcOLjgywiko
+GET {{baseURL}}/{{userID}} HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjczMjg4MzgyLCJleHAiOjE2NzMzNzQ3ODJ9.Uo9vQRglHBHmh2pEczKl0CkujHtN_kkB53yOAc5ekNY
 Content-Type: application/json
 
 ### Update user
-PATCH {{baseURL}}/{{{userID}}} HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjcyOTg5NzU0LCJleHAiOjE2NzMwNzYxNTR9.TkOz43s1ZVKmfE1cEsXrOqCbURjt6WrkNcOLjgywiko
+PATCH {{baseURL}}/{{userID}} HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjNiNzQ2MGY1ZWNlYzc0ODA0NmMzZWY1IiwiaWF0IjoxNjczMjg4MzIxLCJleHAiOjE2NzMzNzQ3MjF9.-u4ODFbAd8eSEWAc5C3GP1L-u-FPWWwpKr267Z6Gd-s
 Content-Type: application/json
 
 {
-    "phoneNumber": "+12 345 678 999"
+    "phoneNumber": "+12 345 678 999",
+    "newslettersEnabled": true
 }
 
 ### Delete user

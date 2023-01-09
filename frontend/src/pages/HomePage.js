@@ -7,7 +7,6 @@ export default function HomePage(){
 
     return (<div className="page">
         <section className="hero">
-            {/* <img className="hero" src={require(`../images/index.jpg`)} /> */}
             <h1>Shoes for athletes</h1>
             <SearchBar/>
         </section>

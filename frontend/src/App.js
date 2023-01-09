@@ -7,6 +7,8 @@ import NavBar from "./components/NavBar";
 import "./styles/App.css";
 
 export default function App() {
+
+    console.log(REACT_APP_akos)
     const { cartID, fetchCartID, checkIfCartIDExistsInDatabase } = useCartContext();
     const { fetchProducts, products } = useProductContext();
 

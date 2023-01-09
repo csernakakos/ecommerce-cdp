@@ -16,6 +16,7 @@ export function ProductProvider({ children }) {
             const { products } = response.data.data;
             setProducts(() => products);
             setSearchedProducts(products);
+            setFilteredProducts(products);
         } catch (error) {
             return null;
         }

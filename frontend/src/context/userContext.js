@@ -13,13 +13,23 @@ export function UserProvider({ children }) {
     const [userID, setUserID] = useState(Cookies.get("userID") || null);
     const [isLoggedIn, setIsLoggedIn] = useState(!!userID);
 
-    const registerUser = async (username, email, password) => {
+    const registerUser = async (username, email, password, newslettersEnabled) => {
+        console.log(newslettersEnabled, "newslettersEnabled");
+        const myUser = {
+            username,
+            email,
+            password,
+            newslettersEnabled,
+        };
+        console.log(myUser);
         try {
             const response = await axios.post(`${baseURL}/users/signup`, {
                 username,
                 email,
                 password,
+                newslettersEnabled,
             });
+            console.log(response.data.data.user);
             const userID = response.data.data.user._id;
 
             setUserID(userID);

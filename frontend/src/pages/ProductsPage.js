@@ -1,27 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import useProductContext from "../hooks/use-product-context";
 import ProductCard from "../components/ProductCard";
 import { useSearchParams } from "react-router-dom";
 
 export default function ProductsPage() {
-    const {products, filteredProducts, setFilteredProducts, updateProductsArray} = useProductContext();
+    const {products, filteredProducts, setFilteredProducts} = useProductContext();
     const [searchParams] = useSearchParams();
-
+    
     let searchParam = searchParams.get("category");
-
+    
     useEffect(() => {
+        let filtered = [...products];
+
         if (!searchParam) {
-            setFilteredProducts(() => products);
-        } else if (searchParam === "men") {
-            const filtered = products.filter((product) => product.gender === "men" || product.gender === "unisex");
-            setFilteredProducts(() => filtered);
-        } else if (searchParam === "women") {
-            const filtered = products.filter((product) => product.gender === "women" || product.gender === "unisex");
-            setFilteredProducts(() => filtered);
+        } else if (searchParam === "men" || searchParam === "women") {
+            filtered = products.filter((product) => product.gender === searchParam || product.gender === "unisex");
         } else if (searchParam === "discount") {
-            const filtered = products.filter((product) => product.onDiscount);
-            setFilteredProducts(() => filtered);
+            filtered = products.filter((product) => product.onDiscount);
         }
+
+        setFilteredProducts(() => filtered);
+
     }, [searchParam])
 
     return (<>
