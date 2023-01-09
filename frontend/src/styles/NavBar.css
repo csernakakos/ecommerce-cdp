@@ -52,9 +52,9 @@ nav ul.menu li svg {
 	text-decoration: none;
 	color: white;
 	display: inline-block;
-	background: #dc1818;
+	background: var(--brand-500);
 	position: absolute;
-	top: 25px;
+	top: 15px;
 	right: 20px;
 	width: 25px;
     border-radius: 8px;

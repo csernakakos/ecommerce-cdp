@@ -1,5 +1,6 @@
 import useUserContext from "../hooks/use-user-context";
 import useCartContext from "../hooks/use-cart-context";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { AiOutlineFastForward } from "react-icons/ai";
 import { BiCartAlt, BiHeart } from "react-icons/bi";
@@ -10,7 +11,6 @@ export default function NavBar() {
     const { basketCounter } = useCartContext();
    
     return (<>
-    
         <nav>
             <NavLink to="/" className="logo"><AiOutlineFastForward />
                 <p>
@@ -41,7 +41,7 @@ export default function NavBar() {
         
         </nav>
             <ul className="categories">
-                <li><NavLink to="/products">All shoes</NavLink></li>
+                <li><NavLink to="/products">All</NavLink></li>
                 <li><NavLink to="/products?category=men">Men</NavLink></li>
                 <li><NavLink to="/products?category=women">Women</NavLink></li>
                 <li><NavLink to="/products?category=discount">On discount</NavLink></li>

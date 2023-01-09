@@ -8,13 +8,14 @@ export function ProductProvider({ children }) {
     const {cartID, setBasket, setBasketCounter} = useCartContext();
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState(products);
+    const [searchedProducts, setSearchedProducts] = useState(products);
 
     const fetchProducts = useCallback(async () => {
         try {
             const response = await axios.get(`${baseURL}/products`);
             const { products } = response.data.data;
-            setProducts(products);
-            setFilteredProducts(products);
+            setProducts(() => products);
+            setSearchedProducts(products);
         } catch (error) {
             return null;
         }
@@ -66,6 +67,8 @@ export function ProductProvider({ children }) {
         setProducts,
         filteredProducts,
         setFilteredProducts,
+        searchedProducts,
+        setSearchedProducts,
         addProductToBasket,
     }
 

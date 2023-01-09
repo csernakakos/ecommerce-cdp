@@ -36,6 +36,10 @@ export default function RegisterPage() {
                 <input required type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
             </label>
 
+            <label className="newsletter">
+                <input type="checkbox" /> <span>Send me product newsletters.</span>
+            </label>
+
             <button className="primary">Register</button>
 
             <p>Already registered? <NavLink className="form-link" to="/login">Log in now</NavLink>.</p>

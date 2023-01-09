@@ -30,6 +30,29 @@ a {
 
 button {
     font-family: inherit;
+    cursor: pointer;
+    border: 0;
+	font-size: 2.4rem;
+	padding: 1.2rem;
+}
+
+button.primary {
+	background: var(--black);
+	color: var(--white);
+}
+
+button.primary:hover {
+    background: var(--brand-300);
+}
+
+button.secondary {
+    background: var(--white);
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px var(--black);
+}
+
+button.secondary:hover {
+    box-shadow: inset 0 0 0 2px var(--black);
 }
 
 input {
@@ -56,7 +79,15 @@ input {
         url("../images/index.jpg") center no-repeat;
     background-size: cover;
     color: var(--white);
+    transition: background-color 0.3s;
 }
+
+/* .page .hero:hover {
+    background:
+    linear-gradient(hsla(318, 99%, 22%, 0.45), hsla(2, 63%, 20%, 0.72)),
+    url("../images/index.jpg") center no-repeat;
+    background-size: cover;
+} */
 
 .page .hero h1 {
     text-transform: uppercase;
@@ -79,7 +110,19 @@ input {
 	text-align: left;
 }
 
-.authentication-form label span {
+input {
+	padding: 1.2rem;
+    outline: none;
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px var(--black);
+}
+
+input:hover {
+    box-shadow: inset 0 0 0 2px var(--black);
+}
+
+.authentication-form label span,
+.authentication-form .newsletter  {
     display: flex;
     align-items: center;
 }
@@ -90,16 +133,8 @@ input {
 }
 
 .authentication-form input {
-	padding: 1.2rem;
 	width: 100%;
-    outline: none;
     margin-bottom: 2.4rem;
-    border: 1px solid transparent;
-    box-shadow: inset 0 0 0 1px var(--black);
-}
-
-.authentication-form input:hover {
-    box-shadow: inset 0 0 0 2px var(--black);
 }
 
 .authentication-form button {
@@ -125,5 +160,16 @@ input {
     text-decoration: underline;
     color: var(--brand-500);
 }
+
+.authentication-form .newsletter {
+    margin-bottom: 2.4rem;
+}
+
+.authentication-form .newsletter input {
+    width: initial;
+    margin: 0;
+    margin-right: 1.2rem;
+}
+
 
 

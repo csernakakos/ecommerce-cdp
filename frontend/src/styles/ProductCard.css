@@ -1,8 +1,8 @@
 .product-card {
     width: 25%;
-    margin: 1.2rem 3.6rem;
+    margin: 1.2rem 3.6rem 2rem 3.6rem;
     border: 1px solid transparent;
-    box-shadow: inset 0 0 0 3px #f1f1f1;
+    /* box-shadow: inset 0 0 0 3px #f1f1f1; */
 }
 
 .product-card img {
@@ -14,7 +14,7 @@
 
 .product-card .details {
     text-align: left;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .details .brand {
@@ -23,4 +23,13 @@
 
 .details .model {
     text-transform: uppercase;
+}
+
+.product-card .buttons {
+    margin-left: 1px;
+    margin-top: 4px;
+}
+
+.product-card .secondary {
+    margin-left: 4px;
 }

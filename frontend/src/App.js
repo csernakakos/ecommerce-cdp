@@ -20,7 +20,6 @@ export default function App() {
     useEffect(() => { fetchProducts() }, [fetchProducts]);
 
     return (<div className="app">
-
         <NavBar />
 
         <main>       

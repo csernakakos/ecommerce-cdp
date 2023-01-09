@@ -1,7 +1,10 @@
 import SearchBar from "../components/SearchBar";
-import { ProductsPage } from "../pages/,pages";
+import ProductCard from "../components/ProductCard";
+import useProductContext from "../hooks/use-product-context";
 
 export default function HomePage(){
+    const {searchedProducts} = useProductContext();
+
     return (<div className="page">
         <section className="hero">
             {/* <img className="hero" src={require(`../images/index.jpg`)} /> */}
@@ -9,6 +12,12 @@ export default function HomePage(){
             <SearchBar/>
         </section>
 
-        <ProductsPage />
+            <div className="product-list list">
+            {searchedProducts.map((product) => {
+                return (
+                    <ProductCard key={product._id} product={product} />
+                )
+            })}
+        </div>
     </div>)
 }

@@ -32,6 +32,10 @@ const userSchema = mongoose.Schema({
         type: Array,
         default: [],
     },
+    newslettersEnabled: {
+        type: Boolean,
+        default: false,
+    }
 }, {timestamps: true});
 
 const User = mongoose.model("User", userSchema);

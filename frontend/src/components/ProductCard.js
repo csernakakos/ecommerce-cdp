@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaCartPlus } from "react-icons/fa";
+import { BiCartAlt, BiHeart } from "react-icons/bi";
 import useProductContext from "../hooks/use-product-context";
 import "../styles/ProductCard.css";
 
@@ -34,7 +34,10 @@ export default function ProductCard({ product }) {
                 <form onSubmit={handleAddToBasket}>
                     <p className="quantity">Size:</p>
                     <input type="number" min={1} max={10} onChange={handleInputChange} value={quantity} />
-                    <button className="button add-to-basket"><FaCartPlus /></button>
+                    <div className="buttons">
+                        <button className="primary add-to-basket"><BiCartAlt /></button>
+                        <button className="secondary wish-list"><BiHeart /></button>
+                    </div>
                 </form>
             </div>
         </div>

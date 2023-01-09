@@ -4,7 +4,7 @@ import useProductContext from "../hooks/use-product-context";
 import "../styles/SearchBar.css";
 
 export default function SearchBar() {
-    const {products, setFilteredProducts} = useProductContext();
+    const {products, setSearchedProducts} = useProductContext();
     const [searchString, setSearchString] = useState("");
 
     const handleSearch = (searchString) => {
@@ -13,7 +13,7 @@ export default function SearchBar() {
             return product.model.toLowerCase().includes(searchString) || product.brand.toLowerCase().includes(searchString);
         });
         
-        setFilteredProducts(filtered);
+        setSearchedProducts(filtered);
         console.log(filtered);
     };
 
@@ -23,8 +23,8 @@ export default function SearchBar() {
 
     return (
         <form className="search" onSubmit={(e) => {e.preventDefault(); handleSearch(searchString)}}>
-            <input className="search-bar" value={searchString} onChange={handleChange} placeholder="Search for sneakers" />
-            <button className="search-button"><BsSearch /></button>
+            <input className="search-bar" value={searchString} onChange={handleChange} placeholder="Search" />
+            <button className="search-button primary"><BsSearch /></button>
         </form>
     )
 }
