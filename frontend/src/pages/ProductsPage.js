@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 
 export default function ProductsPage() {
     const {products, filteredProducts, setFilteredProducts, updateProductsArray} = useProductContext();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
     let searchParam = searchParams.get("category");
 
@@ -14,7 +14,6 @@ export default function ProductsPage() {
             setFilteredProducts(() => products);
         } else if (searchParam === "men") {
             const filtered = products.filter((product) => product.gender === "men" || product.gender === "unisex");
-            console.log(filtered);
             setFilteredProducts(() => filtered);
         } else if (searchParam === "women") {
             const filtered = products.filter((product) => product.gender === "women" || product.gender === "unisex");
