@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { BiCartAlt, BiHeart } from "react-icons/bi";
 import useProductContext from "../hooks/use-product-context";
+import Accordion from "./Accordion";
 import "../styles/ProductCard.css";
 
 export default function ProductCard({ product }) {
     const {addProductToBasket} = useProductContext();
     const [quantity, setQuantity] = useState(1);
+    const sizes = product.sizes;
 
     const handleQuantityChange = (e) => {
         e.preventDefault();
@@ -32,8 +34,9 @@ export default function ProductCard({ product }) {
                 <p className="model">{product.model}</p>
                 <p className="price">{product.priceCurrent} {product.currency}</p>
                 <form onSubmit={handleAddToBasket}>
-                    <p className="quantity">Size:</p>
-                    <input type="number" min={1} max={10} onChange={handleInputChange} value={quantity} />
+                    {/* <p className="quantity">Size:</p> */}
+                    {/* <input type="number" min={1} max={10} onChange={handleInputChange} value={quantity} /> */}
+                    <Accordion items={sizes} />
                     <div className="buttons">
                         <button className="primary add-to-basket"><BiCartAlt /></button>
                         <button className="secondary wish-list"><BiHeart /></button>

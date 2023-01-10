@@ -17,9 +17,11 @@ When the app starts up, on first render, the app:
 
 
 Next steps:
-1. Create wish list functionality.
-2. Basket, Checkout, Payment pages!
-3. Signup for newsletter CSS.
-4. isLoading.
-5. Dropdown for shoe sizes.
-6. Footer.
+1. ProductCard > detach basketCounter from size accordion and wishlist.
+2. ProductCard > size accordion selection should be sent to server.
+3. Create wish list functionality.
+4. Create Basket and Wishlist pages.
+5. Create Checkout, Payment pages!
+6. Create footer.
+7. Signup for newsletter CSS: checkbox needs work in Chrome.
+8. isLoading loaders.

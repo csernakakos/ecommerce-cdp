@@ -5,6 +5,7 @@
     --white: white;
     --brand-500: orangered;
     --brand-300: #3c3939;
+    --brand-100: #F1F1F1;
 }
 
 * {
@@ -45,14 +46,22 @@ button.primary:hover {
     background: var(--brand-300);
 }
 
-button.secondary {
+button.secondary,
+button.input-like {
     background: var(--white);
     border: 1px solid transparent;
     box-shadow: inset 0 0 0 1px var(--black);
 }
 
-button.secondary:hover {
+button.secondary:hover,
+button.input-like:hover {
     box-shadow: inset 0 0 0 2px var(--black);
+}
+
+button.input-like {
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: left;
 }
 
 input {
@@ -110,14 +119,20 @@ input {
 	text-align: left;
 }
 
-input {
+button.input-like {
+    
+}
+
+input,
+button.input-like {
 	padding: 1.2rem;
     outline: none;
     border: 1px solid transparent;
     box-shadow: inset 0 0 0 1px var(--black);
 }
 
-input:hover {
+input:hover,
+button.input-like:hover {
     box-shadow: inset 0 0 0 2px var(--black);
 }
 

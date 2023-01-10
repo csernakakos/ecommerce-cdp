@@ -1,0 +1,30 @@
+.accordion {
+    position: relative;
+}
+
+.accordion button.input-like {
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion .accordion-list {
+    position: absolute;
+    /* top: 47px; */
+    z-index: 9999;
+    width: 100%;
+    background: var(--white);
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px var(--black);
+}
+
+.accordion-list div p {
+    padding: 1.2rem;
+    margin: 0.1rem;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.accordion-list div p:hover {
+    background: var(--brand-100);
+}
