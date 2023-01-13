@@ -1,13 +1,19 @@
-import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import useCartContext from "../hooks/use-cart-context";
+import useUserContext from "../hooks/use-user-context";
 import WishListItem from "../components/WishListItem";
 import "../styles/Container.css";
 
 
 export default function WishListPage() {
+    const navigate = useNavigate();
+    const { isLoggedIn } = useUserContext();
     const {wishList} = useCartContext();
 
-    console.log(wishList);
+    useEffect(() => {
+      if (!isLoggedIn) navigate("/login");
+  }, []);
 
     return (<div className="page">
             {wishList.length === 0 && (

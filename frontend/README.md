@@ -17,13 +17,9 @@ When the app starts up, on first render, the app:
 
 
 Next steps:
-1. DONE ProductCard > detach basketCounter from size accordion and wishlist.
-2. DONE ProductCard > size accordion selection should be sent to server.
-3. DONE Create wish list functionality.
-4. DONE Create Basket and Wishlist pages.
-5. Create Checkout, Payment pages!
-6. Create footer.
-7. Signup for newsletter CSS: checkbox needs work in Chrome.
-8. isLoading loaders.
-9. Popup messages, e.g. "Shoes added to cart." when add to basket button is pressed.
-10. Fix how on the `BasketPage`, array items get rearranged on quantity edit.
+1. Create Payment page.
+2. Create footer.
+3. Signup for newsletter CSS: checkbox needs work in Chrome.
+4. isLoading loaders?
+5. Popup messages, e.g. "Shoes added to cart." when add to basket button is pressed.
+6. Fix how on the `BasketPage`, array items get rearranged on quantity edit.
