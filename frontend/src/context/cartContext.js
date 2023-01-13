@@ -2,23 +2,27 @@ import { useState, useCallback, createContext } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 const CartContext = createContext();
-const baseURL = "http://localhost:5000/api/v1";
+const baseURL = process.env.REACT_APP_server_baseURL;
 
 export function CartProvider({ children }) {
     const [cartID, setCartID] = useState(Cookies.get("cartID") || null);
     const [basket, setBasket] = useState([]);
     const [basketCounter, setBasketCounter] = useState(0);
+    const [wishList, setWishList] = useState([]);
+    const [wishListCounter, setWishListCounter] = useState(0);
 
     const fetchCartID = useCallback(async () => {
         try {
             const response = await axios.post(`${baseURL}/carts`);
             const {_id: cartID} = response.data.data.cart;
-            const { activeCartItems } = response.data.data.cart;
+            const { activeCartItems, wishListedCartItems } = response.data.data.cart;
 
             setCartID(cartID);
             Cookies.set("cartID", cartID, { sameSite: "strict"});
             setBasket([...activeCartItems]);
             setBasketCounter(activeCartItems.length);
+            setWishList([...wishListedCartItems]);
+            setWishListCounter(wishListedCartItems.length);
         } catch (error) {
             return null;
         }
@@ -37,10 +41,13 @@ export function CartProvider({ children }) {
             } else {
                 // cartID exists in the database. Next:
                 // Add active cart items to the basket:
-                const { activeCartItems } = cart.data.data.cart;
+                const { activeCartItems, wishListedCartItems } = cart.data.data.cart;
     
                 setBasket([...activeCartItems]);
                 setBasketCounter(activeCartItems.length);
+                setBasketCounter(activeCartItems.length);
+                setWishList([...wishListedCartItems]);
+                setWishListCounter(wishListedCartItems.length);
             }
         } catch (error) {
                 console.log(error);
@@ -84,13 +91,11 @@ export function CartProvider({ children }) {
             total: item.product.priceCurrent * Number(newQuantity),
         };
 
-        // console.log(updatedItem);
-
         updatedActiveCartItems = activeCartItems.filter((item) => {
             return item.product._id !== productID;
         });
 
-        updatedActiveCartItems = [...updatedActiveCartItems, updatedItem];
+        updatedActiveCartItems = [ ...updatedActiveCartItems, updatedItem ];
         const response = await axios.patch(`${baseURL}/carts/${cartID}`, {
             cartID,
             activeCartItems: updatedActiveCartItems
@@ -132,7 +137,12 @@ export function CartProvider({ children }) {
         setBasketCounter,
         emptyBasket,
         editQuantity,
-        removeProductFromBasket
+        removeProductFromBasket,
+
+        wishList,
+        setWishList,
+        wishListCounter,
+        setWishListCounter,
     }
 
     return (

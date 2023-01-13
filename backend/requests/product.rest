@@ -9,18 +9,18 @@ POST {{baseURL}} HTTP/1.1
 Content-Type: application/json
 
 {
-    "image": "nike-sportswear-air-max-97.webp",
-    "brand": "Nike Sportswear",
-    "model": "Air Max 97",
+    "image": "jordan-air-1-retro.webp",
+    "brand": "Jordan",
+    "model": "Air 1 Retro",
     "category": "sneakers",
-    "priceNormal": "1495",
+    "priceNormal": "1895",
     "priceCurrent": "1495",
     "currency": "DKK",
-    "gender": "men",
+    "gender": "women",
     "sizes": [
         { "size": 39, "available": true, "availableInDays": 0 },
-        { "size": 40, "available": true, "availableInDays": 0 },
-        { "size": 41, "available": true, "availableInDays": 0 },
+        { "size": 40, "available": false, "availableInDays": 7 },
+        { "size": 41, "available": false, "availableInDays": 7 },
         { "size": 42, "available": true, "availableInDays": 0 },
         { "size": 43, "available": false, "availableInDays": 14 },
         { "size": 44, "available": false, "availableInDays": 14 },

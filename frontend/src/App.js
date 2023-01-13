@@ -10,6 +10,8 @@ export default function App() {
     const { cartID, fetchCartID, checkIfCartIDExistsInDatabase } = useCartContext();
     const { fetchProducts, products } = useProductContext();
 
+    console.log(process.env.REACT_APP_server_baseURL);
+
     // On first render, fetch cartID:
     useEffect(() => {
         if (!cartID) fetchCartID();

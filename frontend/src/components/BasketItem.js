@@ -1,6 +1,9 @@
 import { useState } from "react";
 import useCartContext from "../hooks/use-cart-context";
-import {MdEdit, MdRemoveCircle } from "react-icons/md";
+import { MdCheckCircle, MdEdit, MdDeleteOutline } from "react-icons/md";
+import { ImCancelCircle } from "react-icons/im";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 export default function BasketItem({el}) {
     const {removeProductFromBasket, editQuantity} = useCartContext();
@@ -22,31 +25,50 @@ export default function BasketItem({el}) {
     }
 
     return (
-        <div className="basket-item">
-            <p>
-                <span className="name">{el.product.brand}</span> <span className="separator">|</span> <span className="price">{el.product.priceCurrent} DKK</span>
-            </p>
+        <div className="item product-details">
+            <div className="image-container">
+                <img src={require(`../images/${el.product.image}`) || require(`../images/default-shoe.jpg`)} />
+            </div>
+            <div>
+           
+     <p><span className="brand">{el.product.brand}</span> <span className="model">{el.product.model}</span></p>
 
-            {!editMode && (<>
-                <span className="update remove" onClick={() => {handleRemoveItem(el)}}><MdRemoveCircle /></span>
-                <div>
-                    <p className="quantity">Quantity: {el.quantity}</p>
-                    <span className="update edit" onClick={() => {setEditMode(true)}}><MdEdit /></span>
-                </div>
-            </>
-            )}
-
-            {editMode && (
-                <div>
-                    <p className="quantity">Quantity:</p>
+                {!editMode && (<>
+                    <span id={el.product._id} className="update remove" onClick={() => {handleRemoveItem(el)}}><MdDeleteOutline />
+                    <Tooltip anchorId={el.product._id}  content="Remove from basket" place="top" />
+                    </span>
                     
-                    <form onSubmit={() => {handleSave(el.product._id, value)}}>
-                    <input type="number" value={value} min={1} max={10} onChange={handleInputChange} />
-                        <button className="button primary" >Save</button>
-                        <button className="button secondary" onClick={() => {setEditMode(false)}}>Cancel</button>
-                    </form>
-                </div>
-            )}
+                    <div className="quantity-container">
+                        <p className="quantity">Quantity: <span>{el.quantity}</span></p>
+                        <span className="update edit" id={`${el.product._id}-edit`} onClick={() => {setEditMode(true)}}><MdEdit />
+                        <Tooltip anchorId={`${el.product._id}-edit`}  content="Change quantity" place="right" />
+                        </span>
+                    </div>
+                </>
+
+                )}
+
+                {editMode && (
+                    <div className="quantity-container">
+                        
+                        <form onSubmit={() => {handleSave(el.product._id, value)}}>
+                        <label className="quantity">Quantity:
+                        <input type="number" value={value} min={1} max={4} onChange={handleInputChange} />
+                        </label>
+                            <button id={`${el.product._id}-save`}>
+                                <MdCheckCircle />
+                                <Tooltip anchorId={`${el.product._id}-save`}  content="Save" place="bottom" />
+                            </button>
+                            <button id={`${el.product._id}-cancel`} onClick={() => {setEditMode(false)}}>
+                                <ImCancelCircle />
+                                <Tooltip anchorId={`${el.product._id}-cancel`}  content="Cancel" place="bottom" />
+                            </button>
+                        </form>
+                    </div>
+                )}
+
+                <p className="price">{el.total} {el.product.currency}</p>    
+            </div>
         </div>
     )
 }

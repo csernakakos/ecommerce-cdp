@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import useCartContext from "../hooks/use-cart-context";
 import { useNavigate } from "react-router-dom";
 const UserContext = createContext();
-const baseURL = "http://localhost:5000/api/v1";
+const baseURL = process.env.REACT_APP_server_baseURL;
 
 export function UserProvider({ children }) {
     const navigate = useNavigate();

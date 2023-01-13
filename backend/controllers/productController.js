@@ -19,7 +19,7 @@ export const createProduct = asyncHandler(async(req, res) => {
     };
 
     // Get data from body
-    const { brand, model, category, priceNormal, priceCurrent, sizes, gender } = req.body;
+    const { brand, model, category, priceNormal, priceCurrent, sizes, gender, image } = req.body;
 
     // Throw error if model already exists
     let existingModel = await Product.findOne({model});
@@ -46,6 +46,7 @@ export const createProduct = asyncHandler(async(req, res) => {
         onDiscount,
         sizes,
         gender,
+        image,
     });
 
     res.status(201).json({

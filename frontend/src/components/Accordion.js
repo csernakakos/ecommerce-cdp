@@ -4,19 +4,23 @@ import { GoChevronDown } from "react-icons/go";
 import { GoChevronLeft } from "react-icons/go";
 import "../styles/Accordion.css";
 
-export default function Accordion({ items }) {
+export default function Accordion({ items, sendItemToBasket }) {
     const [ isExpanded, setIsExpanded ] = useState(false);
     const [ expandedIndex, setExpandedIndex] = useState(-1);
     const [ selection, setSelection ] = useState("Select size");
 
     const handleAccordionClick = () => {
         setIsExpanded(!isExpanded);
-        console.log("clicked", isExpanded)
     };
 
-    const handleAccordionItemClick = (x) => {
-        setIsExpanded(false);
-        setSelection(x);
+    const handleAccordionItemClick = (item) => {
+        if (!item.available) return;
+        if (item.available) {
+            setIsExpanded(false);
+            setSelection(item.size);
+        };
+
+        sendItemToBasket(item);
     };
 
     const icon = (
@@ -25,13 +29,12 @@ export default function Accordion({ items }) {
         </span>
     );
 
-    const renderedItems = items.map((item, index) => {
-        const isExpanded = index === expandedIndex;
+    const renderedItems = items.map((item) => {
         return (
             <div key={item.size} className={item.available ? "available" : "not-available"}>
                 <>
-                    <p onClick={() => handleAccordionItemClick(item.size)}>
-                        <span>{item.size}</span>
+                    <p onClick={() => handleAccordionItemClick(item)}>
+                        <span className="item">{item.size}</span>
                         {!item.available && <span>Available in {item.availableInDays} days</span>  }
                     </p>
                 </>

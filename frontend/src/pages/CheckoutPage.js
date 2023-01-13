@@ -1,30 +1,36 @@
 import { useState } from "react";
 import useCartContext from "../hooks/use-cart-context";
 import useUserContext from "../hooks/use-user-context";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
-    const { deleteCartID } = useCartContext();
+    const navigate = useNavigate();
+    const { basket, deleteCartID } = useCartContext();
     const { isLoggedIn } = useUserContext();
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [deliveryAddress, setDeliveryAddress] = useState("");
 
-    const amountToPay = "TOTAL";
+    const prices = basket.map((el) => el.total);
+    const sum = prices.reduce((partialSum, a) => partialSum + a, 0);
 
     const handlePay = (e) => {
         e.preventDefault();
         console.log("del")
         deleteCartID();
+        navigate("/");
     };
 
     return (
         <div className="page">
             <h1>Checkout</h1>
 
+            <div className="checkout container">
+
             <p>Pay</p>
             {isLoggedIn && (
                 <form onSubmit={handlePay}>
-                    <button>Pay {amountToPay} DKK</button>
+                    <button className="primary">Pay {sum} DKK</button>
                 </form>
             )}
 
@@ -46,10 +52,11 @@ export default function CheckoutPage() {
                             <span>Delivery address:</span>
                             <input required type="text" id="delivery-address" onChange={(e) => setDeliveryAddress(e.target.value)} />
                         </label>
-                        <button>Pay {amountToPay} DKK</button>
+                        <button>Pay {sum} DKK</button>
                     </form>
                 </div>
             )}
+            </div>
         </div>
     )
 }

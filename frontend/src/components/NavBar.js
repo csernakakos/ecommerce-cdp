@@ -8,15 +8,18 @@ import "../styles/NavBar.css";
 
 export default function NavBar() {
     const {deleteUserID, isLoggedIn} = useUserContext();
-    const { basketCounter } = useCartContext();
+    const { basket } = useCartContext();
+
+    const quantity = basket.map((el) => el.quantity);
+    const sum = quantity.reduce((partialSum, a) => partialSum + a, 0);
    
     return (<>
         <nav>
-            <NavLink to="/" className="logo"><AiOutlineFastForward />
+            <NavLink to="/" className="logo">
                 <p>
-                    <span className="brand-name">Sneakers</span>
-                    <span className="domain-name">.com</span>
+                    <span className="brand-name">Sneakers<span>4</span>U</span>
                 </p>
+                <AiOutlineFastForward />
             </NavLink>
             
             <ul className="menu">
@@ -24,8 +27,8 @@ export default function NavBar() {
                     <NavLink to="/basket">
                         <BiCartAlt />
                     </NavLink>
-                    {basketCounter > 0 && <span className="badge">{basketCounter}</span>}
-                    {basketCounter > 9 && <span className="badge">9+</span>}
+                    {sum > 0 && <span className="badge">{sum}</span>}
+                    {sum > 9 && <span className="badge">9+</span>}
                 </li>
 
                 { isLoggedIn && <>

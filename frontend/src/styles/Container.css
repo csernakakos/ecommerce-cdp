@@ -1,0 +1,115 @@
+.page .container {
+    background: var(--brand-100);
+    text-align: initial;
+    display: flex;
+    justify-content: space-between;
+    padding: 4.2rem;
+}
+
+.page .container h2 {
+    margin-bottom: 3.6rem;
+}
+
+.page .container div.section {
+    background: var(--white);
+    padding: 2.4rem;
+}
+
+.page .container div.main {
+    flex-grow: 3;
+    margin-right: 4rem;
+}
+
+.page .container div.summary {
+    flex-grow: 1;
+}
+
+.page .container button {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+}
+
+.page .container .item {
+    position: relative;
+    padding: 1.2rem;
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px var(--brand-100);
+}
+
+.page .container .brand {
+    font-weight: 800;
+}
+
+.page .container .model {
+    text-transform: uppercase;
+}
+
+.page .container .item .update {
+    cursor: pointer;
+}
+
+.page .container .item .update.remove {
+    position: absolute;
+    top: 1rem;
+    right: 1.4rem;
+    font-size: 2.4rem;
+}
+
+.page .container .item .update.edit {
+    margin-left: 0.9rem;
+}
+
+.page .container .product-details .quantity-container {
+    display: flex;
+    padding: 1rem 0;
+    height: 4.5rem;
+}
+
+.page .container .product-details {
+    display: flex;
+    align-items: center;
+}
+
+.page .container .product-details .image-container {
+    margin-right: 2rem;
+}
+
+.page .container .product-details img {
+    width: 75px;
+}
+
+.product-details .quantity-container .quantity span {
+    margin-left: 0.7rem;
+}
+
+.product-details .quantity-container form {
+    display: flex;
+}
+
+.product-details .quantity-container form input {
+    font-size: 1.6rem;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    outline: none;
+	width: 50px;
+	padding-left: 1.1rem;
+	margin-right: 1rem;
+}
+
+.product-details .quantity-container form button {
+    padding: 0;
+    margin: 0;
+    background: none;
+    width: initial;
+    font-size: 2rem;
+    margin-left: 0.4rem;
+}
+
+.page .container p.total {
+	display: flex;
+	align-items: center;
+	font-size: 2.2rem;
+	margin-bottom: 2.8rem;
+}

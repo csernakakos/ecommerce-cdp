@@ -5,6 +5,7 @@
     --white: white;
     --brand-500: orangered;
     --brand-300: #3c3939;
+    --brand-200: #a2a3a8;
     --brand-100: #F1F1F1;
 }
 
@@ -44,6 +45,10 @@ button.primary {
 
 button.primary:hover {
     background: var(--brand-300);
+}
+
+button.primary.disabled {
+    cursor: not-allowed;
 }
 
 button.secondary,
@@ -91,18 +96,12 @@ input {
     transition: background-color 0.3s;
 }
 
-/* .page .hero:hover {
-    background:
-    linear-gradient(hsla(318, 99%, 22%, 0.45), hsla(2, 63%, 20%, 0.72)),
-    url("../images/index.jpg") center no-repeat;
-    background-size: cover;
-} */
-
 .page .hero h1 {
     text-transform: uppercase;
     font-style: italic;
     font-size: 6.8rem;
     padding-top: 9rem;
+    margin-bottom: 1.2rem;
 }
 
 .product-list {
@@ -119,9 +118,6 @@ input {
 	text-align: left;
 }
 
-button.input-like {
-    
-}
 
 input,
 button.input-like {
@@ -189,7 +185,8 @@ button.input-like:hover {
 input[type=checkbox] {
     position: relative;
     cursor: pointer;
-    -moz-appearance:initial;
+    appearance: initial;
+    -moz-appearance: initial;
 }
 input[type=checkbox]:before {
     content: "";
@@ -213,6 +210,11 @@ input[type=checkbox]:checked:after {
     position: absolute;
     top: 4px;
     left: 8px;
+}
+
+.react-tooltip {
+    font-family: inherit;
+    font-size: 1.5rem;
 }
 
 

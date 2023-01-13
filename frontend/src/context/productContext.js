@@ -2,10 +2,10 @@ import { useState, useCallback, createContext } from "react";
 import axios from "axios";
 import useCartContext from "../hooks/use-cart-context";
 const ProductContext = createContext();
-const baseURL = "http://localhost:5000/api/v1";
+const baseURL = process.env.REACT_APP_server_baseURL;
 
 export function ProductProvider({ children }) {
-    const {cartID, setBasket, setBasketCounter} = useCartContext();
+    const {cartID, setBasket, setWishList, setWishListCounter, setBasketCounter} = useCartContext();
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [searchedProducts, setSearchedProducts] = useState(products);
@@ -23,7 +23,7 @@ export function ProductProvider({ children }) {
     }, []);
 
     const addProductToBasket = async (newItem) => {
-        console.log("addPrd..")
+        // Get all items that are currently in the cart:
         const {data} = await axios.get(`${baseURL}/carts/${cartID}`);
         const activeCartItems = data.data.cart.activeCartItems;
 
@@ -48,6 +48,7 @@ export function ProductProvider({ children }) {
 
             updatedActiveCartItems = [...updatedActiveCartItems, updatedItem];
         }
+
         // If item doesn't yet exist in the cart, add the item to the cart:
         else {
             updatedActiveCartItems = [...activeCartItems, newItem];
@@ -62,6 +63,43 @@ export function ProductProvider({ children }) {
         setBasketCounter(updatedBasket.length);
     };
 
+    const addRemoveProductToWishList = async (item) => {
+        console.log("wishListed", item);
+
+        // Get all items that are currently wishListed in the cart:
+        const {data} = await axios.get(`${baseURL}/carts/${cartID}`);
+        const wishListedCartItems = data.data.cart.wishListedCartItems;
+
+        let updatedWishListedCartItems;
+        let existingItem;
+
+        existingItem = wishListedCartItems.find((existingItem) => {
+                return existingItem.product._id === item.product._id;
+        });
+
+        // If item is already wishListed in the cart, remove it from the wishlist:
+        if (existingItem) {
+            console.log("REMOVING from wishlist!!!!")
+            updatedWishListedCartItems = wishListedCartItems.filter((item) => {
+                return item.product._id !== existingItem.product._id;
+            });
+        }
+        
+        // If item is not yet wishListed in the cart, add the item to the wishList:
+        else {
+            updatedWishListedCartItems = [...wishListedCartItems, item];
+        }
+
+        const response = await axios.patch(`${baseURL}/carts/${cartID}`, {
+            cartID,
+            wishListedCartItems: updatedWishListedCartItems
+        });
+
+        const updatedWishList = response.data.data.cart.wishListedCartItems;
+        setWishList(updatedWishList);
+        setWishListCounter(updatedWishList.length);
+    }
+
     const contextValues = {
         fetchProducts,
         products,
@@ -71,6 +109,7 @@ export function ProductProvider({ children }) {
         searchedProducts,
         setSearchedProducts,
         addProductToBasket,
+        addRemoveProductToWishList,
     }
 
 

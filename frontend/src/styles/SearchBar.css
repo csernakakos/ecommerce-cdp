@@ -10,6 +10,7 @@ form.search {
     border-right: none;
     outline: none;
     font-size: 2.2rem;
+    width: 40%;
 }
 
 .search-bar::placeholder {
@@ -24,13 +25,3 @@ form.search {
     margin-top: 2px;
     margin-right: 2px;
 }
-
-/* .search-button {
-    font-size: 2.5rem;
-    color: var(-brand-500);
-    border: 1px solid hsl(0, 0%, 83.1%);
-    border-left: 0px solid transparent;
-    background: var(--white);
-    padding: 0 2rem;
-    padding-top: 5px;
-} */

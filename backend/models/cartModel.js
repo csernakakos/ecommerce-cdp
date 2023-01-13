@@ -22,6 +22,10 @@ const cartSchema = mongoose.Schema({
         type: Array,
         default: [],
     },
+    wishListedCartItems: {
+        type: Array,
+        default: [],
+    },
     relatedUserID: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 }, {timestamps: true});
 

@@ -25,10 +25,9 @@ nav .logo p .brand-name {
     font-size: 2.8rem;
 }
 
-nav .logo p .domain-name {
+/* nav .logo p .brand-name span {
     color: var(--brand-500);
-    margin-left: 2px;
-}
+} */
 
 nav ul,
 ul.categories {

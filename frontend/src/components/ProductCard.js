@@ -1,45 +1,72 @@
 import { useState } from "react";
 import { BiCartAlt, BiHeart } from "react-icons/bi";
 import useProductContext from "../hooks/use-product-context";
+import useUserContext from "../hooks/use-user-context";
+import { useNavigate } from "react-router-dom";
 import Accordion from "./Accordion";
 import "../styles/ProductCard.css";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 export default function ProductCard({ product }) {
-    const {addProductToBasket} = useProductContext();
-    const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
+    const {addProductToBasket, addRemoveProductToWishList} = useProductContext();
+    const {isLoggedIn} = useUserContext();
+    const [selectedItem, setSelectedItem] = useState({});
     const sizes = product.sizes;
 
-    const handleQuantityChange = (e) => {
-        e.preventDefault();
-        console.log(e.target.value);
-        // setQuantity(Number(e.target.value));
+    const sendItemToBasket = (selectedItem) => {
+        setSelectedItem(selectedItem);
     };
 
-    const handleInputChange = (e) => {
-        console.log(e.target.value);
-        setQuantity(e.target.value);
+    const handleAddToWishList = (e) => {
+        e.preventDefault();
+        if (!isLoggedIn) navigate("/login");
+        if (isLoggedIn) {
+            const item = {
+                product,
+            };
+            addRemoveProductToWishList(item);
+        };
     }
 
     const handleAddToBasket = (e) => {
         e.preventDefault();
-        const item = { product, quantity, total: product.priceCurrent * quantity};
-        addProductToBasket(item);
+
+        // If user has not yet selected a size, do not allow using the basket:
+        if (!selectedItem.size) return;
+
+        if (selectedItem.size) {
+            const item = { 
+                product,
+                size: selectedItem.size,
+                quantity: 1,
+                total: product.priceCurrent
+            };
+            addProductToBasket(item);
+        }
     };
 
     return (
         <div className="product-card">
             <img src={require(`../images/${product.image}`) || require(`../images/default-shoe.jpg`)} />
-            <div className="details">
+            <div className="product-details">
                 <p className="brand">{product.brand}</p>
                 <p className="model">{product.model}</p>
                 <p className="price">{product.priceCurrent} {product.currency}</p>
+                
+                <Accordion items={sizes} sendItemToBasket={sendItemToBasket} />
                 <form onSubmit={handleAddToBasket}>
-                    {/* <p className="quantity">Size:</p> */}
-                    {/* <input type="number" min={1} max={10} onChange={handleInputChange} value={quantity} /> */}
-                    <Accordion items={sizes} />
                     <div className="buttons">
-                        <button className="primary add-to-basket"><BiCartAlt /></button>
-                        <button className="secondary wish-list"><BiHeart /></button>
+                        <button id={product._id}  className={`primary add-to-basket ${selectedItem.size ? "enabled" : "disabled"}`}><BiCartAlt /></button>
+                        {!selectedItem.size && <Tooltip anchorId={product._id}  content="First, select a size." place="right" />}
+                    </div>
+                </form>
+                <form onSubmit={handleAddToWishList}>
+                    <div className="buttons">
+                            <button className="secondary wish-list">
+                                <BiHeart />
+                            </button>
                     </div>
                 </form>
             </div>
