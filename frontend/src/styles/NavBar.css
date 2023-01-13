@@ -37,13 +37,13 @@ ul.categories {
 }
 
 nav ul.menu li {
-    margin-left: 2rem;
+    margin-left: 3rem;
     font-weight: 700;
     position: relative;
 }
 
 nav ul.menu li svg {
-    font-size: 2.4rem;
+    font-size: 3rem;
 }
 
 .badge {

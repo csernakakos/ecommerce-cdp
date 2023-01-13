@@ -7,10 +7,8 @@ import NavBar from "./components/NavBar";
 import "./styles/App.css";
 
 export default function App() {
-    const { cartID, fetchCartID, checkIfCartIDExistsInDatabase } = useCartContext();
-    const { fetchProducts, products } = useProductContext();
-
-    console.log(process.env.REACT_APP_server_baseURL);
+    const { cartID, fetchCartID, checkIfCartIDExistsInDatabase, wishList } = useCartContext();
+    const { fetchProducts } = useProductContext();
 
     // On first render, fetch cartID:
     useEffect(() => {

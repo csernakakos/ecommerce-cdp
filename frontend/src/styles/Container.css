@@ -9,6 +9,10 @@
 .page .container h2 {
     margin-bottom: 3.6rem;
 }
+.page .container a {
+    text-decoration: underline;
+    color: var(--brand-500);
+}
 
 .page .container div.section {
     background: var(--white);

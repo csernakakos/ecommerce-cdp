@@ -1,17 +1,17 @@
 import useUserContext from "../hooks/use-user-context";
 import useCartContext from "../hooks/use-cart-context";
-import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { AiOutlineFastForward } from "react-icons/ai";
-import { BiCartAlt, BiHeart } from "react-icons/bi";
+import { AiOutlineFastForward, AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import "../styles/NavBar.css";
 
 export default function NavBar() {
     const {deleteUserID, isLoggedIn} = useUserContext();
-    const { basket } = useCartContext();
+    const { basket, wishList } = useCartContext();
 
     const quantity = basket.map((el) => el.quantity);
     const sum = quantity.reduce((partialSum, a) => partialSum + a, 0);
+
+    console.log(wishList.length);
    
     return (<>
         <nav>
@@ -25,14 +25,17 @@ export default function NavBar() {
             <ul className="menu">
                 <li> 
                     <NavLink to="/basket">
-                        <BiCartAlt />
+                        <AiOutlineShoppingCart />
                     </NavLink>
                     {sum > 0 && <span className="badge">{sum}</span>}
                     {sum > 9 && <span className="badge">9+</span>}
                 </li>
 
                 { isLoggedIn && <>
-                    <li><NavLink to="/wishlist"><BiHeart /></NavLink></li>
+                    <li>
+                        <NavLink to="/wishlist"><AiOutlineHeart /></NavLink>
+                        {wishList.length > 0 && <span className="badge">{wishList.length}</span>}
+                    </li>
                     <li><NavLink to="/" onClick={deleteUserID}>Log out</NavLink></li>
                 </>}
 

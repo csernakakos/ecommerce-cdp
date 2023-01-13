@@ -19,8 +19,8 @@ When the app starts up, on first render, the app:
 Next steps:
 1. DONE ProductCard > detach basketCounter from size accordion and wishlist.
 2. DONE ProductCard > size accordion selection should be sent to server.
-3. IN PROGRESS Create wish list functionality.
-4. IN PROGRESS Create Basket and Wishlist pages.
+3. DONE Create wish list functionality.
+4. DONE Create Basket and Wishlist pages.
 5. Create Checkout, Payment pages!
 6. Create footer.
 7. Signup for newsletter CSS: checkbox needs work in Chrome.

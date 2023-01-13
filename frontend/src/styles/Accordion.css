@@ -31,8 +31,5 @@
 
 .accordion-list div.not-available p {
     cursor: not-allowed;
-}
-
-.accordion-list div.not-available p .item {
     color: var(--brand-200);
 }

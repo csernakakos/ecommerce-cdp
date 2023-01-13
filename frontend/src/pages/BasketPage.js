@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { TbSum } from "react-icons/tb";
 import BasketItem from "../components/BasketItem";
 import useCartContext from "../hooks/use-cart-context";
@@ -24,7 +24,12 @@ export default function BasketPage() {
     return (
         <div className="page">
             {basket.length === 0 && (
-                <div>Nothing here yet.</div>
+                <div className="basket-list container">
+                    <div>
+                        <h2>Nothing here yet.</h2>
+                        <p>Browse our <NavLink to="/products">collections</NavLink>.</p>
+                  </div>
+                </div>
             )}
 
             {basket.length > 0 && (

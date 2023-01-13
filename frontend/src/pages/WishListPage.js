@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import useCartContext from "../hooks/use-cart-context";
 import WishListItem from "../components/WishListItem";
 import "../styles/Container.css";
@@ -10,7 +11,12 @@ export default function WishListPage() {
 
     return (<div className="page">
             {wishList.length === 0 && (
-                <div>Nothing here yet.</div>
+                <div className="wish-list container">
+                  <div>
+                    <h2>Nothing here yet.</h2>
+                    <p>Browse our <NavLink to="/products">collections</NavLink>.</p>
+                  </div>
+                </div>
             )}
 
           {wishList.length > 0 && (

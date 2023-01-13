@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useCartContext from "../hooks/use-cart-context";
-import { MdCheckCircle, MdEdit, MdDeleteOutline } from "react-icons/md";
+import { MdCheckCircle } from "react-icons/md";
+import { AiOutlineDelete, AiTwotoneEdit } from "react-icons/ai";
 import { ImCancelCircle } from "react-icons/im";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -34,13 +35,13 @@ export default function BasketItem({el}) {
      <p><span className="brand">{el.product.brand}</span> <span className="model">{el.product.model}</span></p>
 
                 {!editMode && (<>
-                    <span id={el.product._id} className="update remove" onClick={() => {handleRemoveItem(el)}}><MdDeleteOutline />
+                    <span id={el.product._id} className="update remove" onClick={() => {handleRemoveItem(el)}}><AiOutlineDelete />
                     <Tooltip anchorId={el.product._id}  content="Remove from basket" place="top" />
                     </span>
                     
                     <div className="quantity-container">
                         <p className="quantity">Quantity: <span>{el.quantity}</span></p>
-                        <span className="update edit" id={`${el.product._id}-edit`} onClick={() => {setEditMode(true)}}><MdEdit />
+                        <span className="update edit" id={`${el.product._id}-edit`} onClick={() => {setEditMode(true)}}><AiTwotoneEdit />
                         <Tooltip anchorId={`${el.product._id}-edit`}  content="Change quantity" place="right" />
                         </span>
                     </div>
